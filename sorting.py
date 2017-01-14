@@ -18,12 +18,12 @@ for filename in files_list:
 
 shuffle(words)
 words = filter(None, words)
-nwords = []
-for i in words:
-	for k in range(0,21):
-		nwords.append(i)
+nwords = words
+for i in range(7):
+	nwords.extend(nwords)
+print len(nwords)
 shuffle(nwords)
-sizes = [1,10,100,1000,10000,100000,500000,1000000,2000000,5000000,7000000,10000000,20000000,40000000,60000000,80000000,100000000]
+sizes = [1,10,100,1000,10000,100000,1000000,10000000,50000000,100000000,200000000,500000000]
 print "final", len(nwords)
 tlist = []
 
@@ -37,7 +37,8 @@ for s in sizes:
 	print s, tot
 	tlist.append(tot)
 
-plt.plot(sizes, tlist, "b*-")
+nlist = [0,1,2,3,4,5,6,7,7.5,8,8.2,8.5]
+plt.plot(nlist, tlist, "b*-")
 plt.ylabel("Sorting Time")
-plt.xlabel("Word Count")
+plt.xlabel("Word Count (power of 10)")
 plt.savefig("graph.png")
